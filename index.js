@@ -8,7 +8,16 @@ const dates = [
 ];
 
 // TODO: Buatlah fungsi createDate
-const createDate = null;
+const createDate = (dates, position = '') => {
+  // Convert to epoch time
+  const epochTime = dates.map(date => Math.floor(Date.parse(date) / 1000));
+
+  // Find position
+  const results = position !== '' ? epochTime.splice(position, 1) : epochTime;
+
+  // Sort and join with `-` if results is array
+  return results.sort((first, second) => (first-second)).join("-");
+}
 
 // ! JANGAN DIMODIFIKASI
 (() => {
